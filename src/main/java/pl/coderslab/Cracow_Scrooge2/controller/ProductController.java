@@ -53,7 +53,7 @@ public class ProductController {
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Long id,Model model){
         model.addAttribute("product",productRepository.findById(id));
-        return "/product/edit";
+        return "product/edit";
     }
 
     @PostMapping("/edit/{id}")
