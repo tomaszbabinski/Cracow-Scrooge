@@ -19,6 +19,7 @@
             <th scope="col">Name</th>
             <th scope="col">brand</th>
             <th scope="col">Edit</th>
+            <th scope="col">Remove</th>
         </thead>
         <tbody>
             <tr>
@@ -27,6 +28,11 @@
                 <td>
                     <a th:href="@{'/product/edit/'+${product.id}}">
                         <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{'/product/remove/'+${product.id}}">
+                        <span class="glyphicon glyphicon-remove-circle"></span>
                     </a>
                 </td>
             </tr>

@@ -55,17 +55,17 @@ public class UserController {
 
         User user = this.userRepository.findByEmail(loginData.getEmail());
         if(user==null){
-            model.addAttribute("user",loginData);
-            model.addAttribute("message","User not found");
-            return "/user/login";
+            model.addAttribute("loginData",new UserDto());
+            model.addAttribute("message","Wrong password or email");
+            return "login";
         }else{
             if(!user.isPasswordCorrect(loginData.getPassword())){
-                model.addAttribute("user", loginData);
-                model.addAttribute("message","Wrong password");
-                return "/user/login";
+                model.addAttribute("loginData", new UserDto());
+                model.addAttribute("message","Wrong password or email");
+                return "login";
             }else{
                 httpSession.setAttribute("loggedInUser", user);
-                return "redirect:/home";
+                return "/home";
             }
         }
     }
