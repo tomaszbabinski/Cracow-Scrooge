@@ -15,18 +15,26 @@
 
 <div class="container">
 
-    <table>
-        <th:block th:each="product : ${products}">
-            <tr>
-                <td>
-                    <a th:href="@{'/product/getById/'+${product.id}}" th:text="${product.name}"></a>
-                </td>
+    <table class="table table-striped">
+        <thead class="thead-light">
 
-                <td th:text="${product.brand}" />
+        <th scope="col">Name</th>
+        <th scope="col">brand</th>
+
+        </thead>
+        <tbody>
+            <th:block th:each="product : ${products}">
+                <tr>
+                    <td>
+                        <a th:href="@{'/product/getById/'+${product.id}}" th:text="${product.name}"></a>
+                    </td>
+
+                    <td th:text="${product.brand}" />
 
 
-            </tr>
-        </th:block>
+                </tr>
+            </th:block>
+        </tbody>
     </table>
 
 

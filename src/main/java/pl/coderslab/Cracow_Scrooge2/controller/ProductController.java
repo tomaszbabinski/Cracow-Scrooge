@@ -31,7 +31,7 @@ public class ProductController {
     public String addProcess(@ModelAttribute Product product, HttpSession httpSession){
         product.setUser((User) httpSession.getAttribute("loggedInUser"));
         productRepository.save(product);
-        return "redirect:/home";
+        return "redirect:/product/all";
     }
 
 
