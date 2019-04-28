@@ -61,4 +61,16 @@ public class ProductController {
         productRepository.save(product);
         return "redirect:/product/all";
     }
+
+    @GetMapping("/remove/{id}")
+    public String remove(@PathVariable Long id,Model model){
+        model.addAttribute("product",productRepository.getOne(id));
+        return "product/remove";
+    }
+
+    @PostMapping("/remove/{id}")
+    public String processRemoval(@PathVariable Long id){
+        productRepository.delete(productRepository.getOne(id));
+        return "redirect:/product/all";
+    }
 }

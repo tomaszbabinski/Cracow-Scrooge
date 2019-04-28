@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Remove product confirmation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <table class="table table-striped">
+        <thead class="thead-light">
+        <th scope="col">Name</th>
+        <th scope="col">brand</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td th:text="${product.name}"/>
+                <td th:text="${product.brand}"/>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <p>Do you want to delete this product?</p>
+            <!--<button type="button" class="btn btn-danger" onclick="href={/product/remove"${product.id}">Yes</button>-->
+            <!--<button type="button" class="btn btn-success"><a th:href="@{/product/all}">No</a></button>-->
+
+            <!--<a th:href="@{'/product/remove/'+${product.id}}" th:method="post">-->
+                <!--<button type="button" class="btn btn-danger">Yes</button>-->
+            <!--</a>-->
+
+            <form method="post" th:action="@{'/product/remove/'+${product.id}}">
+                <button type="submit" class="btn btn-danger">Yes</button>
+            </form>
+
+        </div>
+    </div>
+
+
+
+</div>
+</body>
+</html>
+
