@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Show all products</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script rel="stylesheet" src="/js/script.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <table>
+        <th:block th:each="product : ${products}">
+            <tr>
+                <td>
+                    <a th:href="@{'/product/getById/'+${product.id}}" th:text="${product.name}"></a>
+                </td>
+
+                <td th:text="${product.brand}" />
+
+
+            </tr>
+        </th:block>
+    </table>
+
+
+</div>
+
+
+</body>
+</html>
