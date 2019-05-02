@@ -13,19 +13,23 @@
 
 <header>
 
-    <nav class="navbar navbar-dark bg-primary navbar-expand-md">
+    <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
         <a class="navbar-brand" href="/home"><img th:src="@{/images/DRAGON2.png}" width="60" height="60" class="display-inline-block mr-2"> Cracow Scrooge</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="mainmenu">
-            <ul class="navbar-nav">
-                <li class="nav-item">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
                     <a class="nav-link" th:href="@{/home}"> Home </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link" th:href="@{/product/all}"> Products </a>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" > Products </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" th:href="@{/product/all}"> All products </a>
+                        <a class="dropdown-item" th:href="@{/product/add}"> Add product </a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"> Offers </a>
@@ -34,6 +38,12 @@
                     <a class="nav-link"> History </a>
                 </li>
             </ul>
+
+            <form class="form-inline" th:action="@{/product/findByName}" method="get">
+                <input class="form-control mr-1"  type="search" placeholder="Search a product" name="product">
+                <button class="btn btn-light" type="submit">Search</button>
+            </form>
+
         </div>
 
 

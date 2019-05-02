@@ -9,6 +9,7 @@ import pl.coderslab.Cracow_Scrooge2.entity.User;
 import pl.coderslab.Cracow_Scrooge2.repository.ProductRepository;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/product")
@@ -72,5 +73,12 @@ public class ProductController {
     public String processRemoval(@PathVariable Long id){
         productRepository.delete(productRepository.getOne(id));
         return "redirect:/product/all";
+    }
+
+    @GetMapping("/findByName")
+    public String findByName(@RequestParam String product, Model model,HttpSession session){
+        User user = (User) session.getAttribute("loggedInUser");
+        model.addAttribute("products",productRepository.findAllByNameAndUserId(product,user.getId()));
+        return "allProducts";
     }
 }
