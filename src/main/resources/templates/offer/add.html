@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Adding offer to the product</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form th:action="@{#}" th:object="${offer}"
+                  method="post" class="form-horizontal" role="form">
+                  <h>Adding new offer</h>
+                  <div class="form-group">
+                      <div class="col-sm-9">
+                      <input type="number" th:field="*{price}"
+                             placeholder="Price of the product" class="form-control" step="0.01"/>
+                      </div>
+                  </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{shopName}"
+                               placeholder="Shop name" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary btn-block">Add new offer</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

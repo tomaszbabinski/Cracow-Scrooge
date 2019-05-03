@@ -22,4 +22,6 @@ public class Offer {
     private Product product;
 
     private Double price;
+
+    private String shopName;
 }

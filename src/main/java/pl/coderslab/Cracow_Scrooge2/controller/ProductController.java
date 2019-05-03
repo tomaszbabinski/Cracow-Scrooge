@@ -9,7 +9,6 @@ import pl.coderslab.Cracow_Scrooge2.entity.User;
 import pl.coderslab.Cracow_Scrooge2.repository.ProductRepository;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 @RequestMapping("/product")
@@ -25,7 +24,7 @@ public class ProductController {
     @GetMapping("/add")
     public String add(Model model){
         model.addAttribute("product",new Product());
-        return "add";
+        return "product/add";
     }
 
     @PostMapping("/add")
@@ -41,7 +40,7 @@ public class ProductController {
     public String getAllProducts(Model model,HttpSession session){
         User user = (User) session.getAttribute("loggedInUser");
         model.addAttribute("products",productRepository.findAllByUserId(user.getId()));
-        return "allProducts";
+        return "product/allProducts";
     }
 
     @GetMapping("/getById/{id}")
@@ -79,6 +78,6 @@ public class ProductController {
     public String findByName(@RequestParam String product, Model model,HttpSession session){
         User user = (User) session.getAttribute("loggedInUser");
         model.addAttribute("products",productRepository.findAllByNameAndUserId(product,user.getId()));
-        return "allProducts";
+        return "product/allProducts";
     }
 }

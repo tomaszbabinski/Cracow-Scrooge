@@ -14,12 +14,13 @@
 
 <div class="container">
 
-    <table class="table table-striped">
-        <thead class="thead-light">
-            <th scope="col">Name</th>
-            <th scope="col">brand</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Remove</th>
+    <table class="table table-striped text-center">
+        <thead class="thead-light text-center">
+            <th scope="col" class="text-center">Name</th>
+            <th scope="col" class="text-center">brand</th>
+            <th scope="col" class="text-center">Edit</th>
+            <th scope="col" class="text-center">Remove</th>
+            <th scope="col" class="text-center">Offer</th>
         </thead>
         <tbody>
             <tr>
@@ -33,6 +34,11 @@
                 <td>
                     <a th:href="@{'/product/remove/'+${product.id}}">
                         <span class="glyphicon glyphicon-remove-circle"></span>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{'/offer/add/'+${product.id}}">
+                        <span class="glyphicon glyphicon-plus"></span>
                     </a>
                 </td>
             </tr>
