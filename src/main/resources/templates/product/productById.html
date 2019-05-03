@@ -16,32 +16,50 @@
 
     <table class="table table-striped text-center">
         <thead class="thead-light text-center">
-            <th scope="col" class="text-center">Name</th>
-            <th scope="col" class="text-center">brand</th>
-            <th scope="col" class="text-center">Edit</th>
-            <th scope="col" class="text-center">Remove</th>
-            <th scope="col" class="text-center">Offer</th>
+        <th scope="col" class="text-center">Name</th>
+        <th scope="col" class="text-center">brand</th>
+        <th scope="col" class="text-center">Edit</th>
+        <th scope="col" class="text-center">Remove</th>
+        <th scope="col" class="text-center">Offer</th>
         </thead>
         <tbody>
+        <tr>
+            <td th:text="${product.name}"/>
+            <td th:text="${product.brand}"/>
+            <td>
+                <a th:href="@{'/product/edit/'+${product.id}}">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+            </td>
+            <td>
+                <a th:href="@{'/product/remove/'+${product.id}}">
+                    <span class="glyphicon glyphicon-remove-circle"></span>
+                </a>
+            </td>
+            <td>
+                <a th:href="@{'/offer/add/'+${product.id}}">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <h3 style="text-align: center" id="offerList"><strong>Offer list</strong></h3>
+
+    <table class="table table-striped text-center">
+        <thead class="thead-light text-center">
+
+        <th scope="col" class="text-center">Price</th>
+        <th scope="col" class="text-center">Shop</th>
+
+        </thead>
+        <tbody>
+        <th:block th:each="offer : ${product.offers}">
             <tr>
-                <td th:text="${product.name}"/>
-                <td th:text="${product.brand}"/>
-                <td>
-                    <a th:href="@{'/product/edit/'+${product.id}}">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
-                </td>
-                <td>
-                    <a th:href="@{'/product/remove/'+${product.id}}">
-                        <span class="glyphicon glyphicon-remove-circle"></span>
-                    </a>
-                </td>
-                <td>
-                    <a th:href="@{'/offer/add/'+${product.id}}">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </a>
-                </td>
+                <td th:text="${offer.price}"/>
+                <td th:text="${offer.shopName}"/>
             </tr>
+        </th:block>
         </tbody>
     </table>
 
