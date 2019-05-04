@@ -38,7 +38,7 @@ public class UserController {
         }else{
             User user = new User(userDto);
             userRepository.save(user);
-            return "/home";
+            return "redirect:/user/login";
         }
 
     }
