@@ -5,20 +5,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.Cracow_Scrooge2.entity.Product;
+import pl.coderslab.Cracow_Scrooge2.entity.ProductGroup;
 import pl.coderslab.Cracow_Scrooge2.entity.User;
+import pl.coderslab.Cracow_Scrooge2.repository.ProductGroupRepository;
 import pl.coderslab.Cracow_Scrooge2.repository.ProductRepository;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/product")
 public class ProductController {
 
     private ProductRepository productRepository;
+    private ProductGroupRepository productGroupRepository;
 
     @Autowired
-    public ProductController(ProductRepository productRepository) {
+    public ProductController(ProductRepository productRepository, ProductGroupRepository productGroupRepository) {
         this.productRepository = productRepository;
+        this.productGroupRepository = productGroupRepository;
     }
 
     @GetMapping("/add")
@@ -79,5 +84,12 @@ public class ProductController {
         User user = (User) session.getAttribute("loggedInUser");
         model.addAttribute("products",productRepository.findAllByNameAndUserId(product,user.getId()));
         return "product/allProducts";
+    }
+
+
+    @ModelAttribute("categories")
+    List<ProductGroup> getCategories(HttpSession session){
+        User user = (User) session.getAttribute("loggedInUser");
+        return productGroupRepository.findAllByUserId(user.getId());
     }
 }

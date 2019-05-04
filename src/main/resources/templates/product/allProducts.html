@@ -22,6 +22,8 @@
 
         <th scope="col">Name</th>
         <th scope="col">brand</th>
+        <th scope="col">Category</th>
+
 
         </thead>
         <tbody>
@@ -30,9 +32,8 @@
                     <td>
                         <a th:href="@{'/product/getById/'+${product.id}}" th:text="${product.name}"></a>
                     </td>
-
                     <td th:text="${product.brand}" />
-
+                    <td th:text="${product.group.name}" />
 
                 </tr>
             </th:block>

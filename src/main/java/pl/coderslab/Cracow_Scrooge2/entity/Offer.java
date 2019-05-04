@@ -4,6 +4,7 @@ package pl.coderslab.Cracow_Scrooge2.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.coderslab.Cracow_Scrooge2.dto.OfferDto;
 
 import javax.persistence.*;
 
@@ -24,4 +25,9 @@ public class Offer {
     private Double price;
 
     private String shopName;
+
+    public Offer(OfferDto offerDto){
+        this.setShopName(offerDto.getShopName());
+        this.setPrice(offerDto.getPrice());
+    }
 }
