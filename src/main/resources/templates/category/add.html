@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Adding Category</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form th:action="@{/category/add}" th:object="${productGroupDto}"
+                  method="post" class="form-horizontal" role="form">
+                  <h>Adding new category</h>
+                  <div class="form-group">
+                      <div class="col-sm-9">
+
+                      <input type="text" th:field="*{name}"
+                             placeholder="Name of the category" class="form-control" th:errorClass="error"/>
+                      <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="validation-message">Name error</label>
+                      </div>
+                  </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary btn-block">Add new category</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

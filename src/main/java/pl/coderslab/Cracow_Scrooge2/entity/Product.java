@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Locale;
 
 @Entity
 @Table(name = "products")
@@ -22,8 +23,6 @@ public class Product {
     private String name;
 
     private String brand;
-
-    private Double averagePrice;
 
     @ManyToOne
     private ProductGroup group;

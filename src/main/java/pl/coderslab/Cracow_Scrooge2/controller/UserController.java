@@ -34,7 +34,7 @@ public class UserController {
     @PostMapping("/register")
     public String register(@Valid UserDto userDto, BindingResult result){
         if(result.hasErrors()){
-            return "user/register";
+            return "redirect:/user/register";
         }else{
             User user = new User(userDto);
             userRepository.save(user);
