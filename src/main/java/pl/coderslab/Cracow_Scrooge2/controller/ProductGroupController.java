@@ -4,12 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.Cracow_Scrooge2.dto.ProductGroupDto;
 import pl.coderslab.Cracow_Scrooge2.entity.ProductGroup;
+import pl.coderslab.Cracow_Scrooge2.entity.User;
 import pl.coderslab.Cracow_Scrooge2.repository.ProductGroupRepository;
 
 import javax.validation.Valid;
@@ -32,11 +30,14 @@ public class ProductGroupController {
     }
 
     @PostMapping("/add")
-    public String addCategoryProcess(@Valid @ModelAttribute("productGroupDto") ProductGroupDto productGroupDto, BindingResult result, Model model) {
+    public String addCategoryProcess(@Valid @ModelAttribute("productGroupDto") ProductGroupDto productGroupDto, BindingResult result, Model model,
+    @SessionAttribute("loggedInUser") User user) {
         if (result.hasErrors()) {
             return "category/add";
         } else {
+
             ProductGroup productGroup = new ProductGroup(productGroupDto);
+            productGroup.setUser(user);
             productGroupRepository.save(productGroup);
             return "redirect:/home";
         }

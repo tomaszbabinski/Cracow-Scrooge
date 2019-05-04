@@ -24,7 +24,11 @@ public class ProductGroup {
     @OneToMany(mappedBy = "group")
     private List<Product> productList;
 
+    @ManyToOne
+    private User user;
+
     public ProductGroup(ProductGroupDto productGroupDto){
         this.name = productGroupDto.getName();
     }
+
 }
