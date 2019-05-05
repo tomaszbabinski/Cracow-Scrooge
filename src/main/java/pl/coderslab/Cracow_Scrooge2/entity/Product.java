@@ -27,6 +27,7 @@ public class Product {
     private ProductGroup group;
 
     @OneToMany(mappedBy = "product")
+    @JsonIgnore
     private List<Purchase> purchases;
 
     @ManyToOne
@@ -34,6 +35,7 @@ public class Product {
     private User user;
 
     @OneToMany(mappedBy = "product")
+    @JsonIgnore
     private List<Offer> offers;
 
 }

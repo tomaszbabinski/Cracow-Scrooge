@@ -1,6 +1,7 @@
 package pl.coderslab.Cracow_Scrooge2.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class Offer {
     private Long id;
 
     @ManyToOne
+    @JsonIgnore
     private Product product;
 
     private Double price;

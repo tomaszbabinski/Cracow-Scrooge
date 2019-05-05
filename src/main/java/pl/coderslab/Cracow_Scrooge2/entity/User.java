@@ -1,5 +1,6 @@
 package pl.coderslab.Cracow_Scrooge2.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.mindrot.jbcrypt.BCrypt;
 import pl.coderslab.Cracow_Scrooge2.dto.UserDto;
@@ -28,12 +29,15 @@ public class User {
     private String hashedPassword;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Product> products;
 
     @OneToMany(mappedBy="user")
+    @JsonIgnore
     private List<ProductGroup> productGroups;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Purchase> purchases;
 
 

@@ -1,5 +1,6 @@
 package pl.coderslab.Cracow_Scrooge2.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,9 +23,11 @@ public class ProductGroup {
     private String name;
 
     @OneToMany(mappedBy = "group")
+    @JsonIgnore
     private List<Product> productList;
 
     @ManyToOne
+    @JsonIgnore
     private User user;
 
     public ProductGroup(ProductGroupDto productGroupDto){

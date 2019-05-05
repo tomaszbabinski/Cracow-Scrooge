@@ -11,7 +11,7 @@ import pl.coderslab.Cracow_Scrooge2.repository.OfferRepository;
 import pl.coderslab.Cracow_Scrooge2.repository.ProductRepository;
 import pl.coderslab.Cracow_Scrooge2.repository.PurchaseRepository;
 
-import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/purchase")
@@ -47,6 +47,12 @@ public class PurchaseController {
         purchase.setSavedMoney(savings);
         purchaseRepository.save(purchase);
         return "redirect:/home";
+    }
+
+    @GetMapping("/chart")
+    @ResponseBody
+    public List<Purchase> renderChart(){
+        return purchaseRepository.findAll();
     }
 
 }
