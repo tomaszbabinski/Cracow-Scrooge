@@ -33,6 +33,9 @@ public class User {
     @OneToMany(mappedBy="user")
     private List<ProductGroup> productGroups;
 
+    @OneToMany(mappedBy = "user")
+    private List<Purchase> purchases;
+
 
     public User(UserDto userDto) {
         this.firstName = userDto.getFirstName();

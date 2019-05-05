@@ -51,6 +51,7 @@
 
         <th scope="col" class="text-center">Price</th>
         <th scope="col" class="text-center">Shop</th>
+        <th scope="col" class="text-center">Add purchase</th>
 
         </thead>
         <tbody>
@@ -58,6 +59,12 @@
             <tr>
                 <td th:text="${offer.price}"/>
                 <td th:text="${offer.shopName}"/>
+                <td>
+                    <a th:href="@{'/purchase/add/'+${product.id}+'/'+${offer.id}}">
+                        <span class="glyphicon glyphicon-usd"></span>
+                    </a>
+                </td>
+
             </tr>
         </th:block>
         </tbody>

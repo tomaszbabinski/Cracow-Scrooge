@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Locale;
 
 @Entity
 @Table(name = "products")
@@ -26,6 +25,9 @@ public class Product {
 
     @ManyToOne
     private ProductGroup group;
+
+    @OneToMany(mappedBy = "product")
+    private List<Purchase> purchases;
 
     @ManyToOne
     @JsonIgnore
