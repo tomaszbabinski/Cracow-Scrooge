@@ -21,7 +21,7 @@ public class Offer {
     private Long id;
 
     @ManyToOne
-    @JsonIgnore
+
     private Product product;
 
     private Double price;

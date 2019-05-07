@@ -6,8 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.Cracow_Scrooge2.dto.OfferDto;
 import pl.coderslab.Cracow_Scrooge2.entity.Offer;
+import pl.coderslab.Cracow_Scrooge2.entity.User;
 import pl.coderslab.Cracow_Scrooge2.repository.OfferRepository;
 import pl.coderslab.Cracow_Scrooge2.repository.ProductRepository;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/offer")
@@ -35,6 +38,12 @@ public class OfferController {
         offer.setProduct(productRepository.getOne(id));
         offerRepository.save(offer);
         return "redirect:/product/getById/"+id;
+    }
+
+    @GetMapping("/bestOffers")
+    @ResponseBody
+    public List<Offer> renderChart(@SessionAttribute("loggedInUser") User user){
+        return offerRepository.findBestOffersForAgivenProductAndUserId(user.getId());
     }
 
 }
