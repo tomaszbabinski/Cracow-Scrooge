@@ -51,8 +51,8 @@ public class PurchaseController {
 
     @GetMapping("/chart")
     @ResponseBody
-    public List<Purchase> renderChart(){
-        return purchaseRepository.findAll();
+    public List<Purchase> renderChart(@SessionAttribute("loggedInUser") User user){
+        return purchaseRepository.findAllByUser(user);
     }
 
 }

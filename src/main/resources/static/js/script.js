@@ -17,14 +17,21 @@ function renderChart(){
         return response.json();
     }).then(function (response) {
 
-        var labelsOfChart = [];
+        if (!(Array.isArray(response) && response.length)) {
+            var chartIsEmpty = document.getElementById('chartInfo');
+            chartIsEmpty.innerText = "Upps Scrooge - you don't have any savings!!!";
+            var nextElem = chartIsEmpty.nextElementSibling;
+            nextElem.innerHTML=("Get to work!!!");
+        } else{
+
+            var labelsOfChart = [];
         var dataMap = new Map();
         for (const purchase of response) {
             labelsOfChart.push(purchase.product.group.name)
-            if(dataMap.has(purchase.product.group.name)){
-                dataMap.set(purchase.product.group.name,dataMap.get(purchase.product.group.name)+purchase.savedMoney);
-            }else{
-                dataMap.set(purchase.product.group.name,purchase.savedMoney);
+            if (dataMap.has(purchase.product.group.name)) {
+                dataMap.set(purchase.product.group.name, dataMap.get(purchase.product.group.name) + purchase.savedMoney);
+            } else {
+                dataMap.set(purchase.product.group.name, purchase.savedMoney);
             }
         }
         // console.log(dataMap);
@@ -43,11 +50,14 @@ function renderChart(){
             data: {
                 labels: keys,
                 datasets: [{
-                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                    backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
                     borderColor: 'rgb(255, 99, 132)',
                     data: values
                 }]
             }
-    });
+
+
+        });
+    }
 })
 }
