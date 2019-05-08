@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     renderChart();
-
     renderBestOffersPerProduct();
+    setInterval(renderBestOffersPerProduct,1000*15);
 
 });
 
@@ -80,38 +80,42 @@ function renderBestOffersPerProduct() {
         return response.json();
     }).then(function (response) {
 
+        var bestOfferDiv = document.getElementById('bestOffers');
+
         if (!(Array.isArray(response) && response.length)) {
-            // var chartIsEmpty = document.getElementById('chartInfo');
-            // chartIsEmpty.innerText = "Upps Scrooge - you don't have any savings!!!";
-            // var nextElem = chartIsEmpty.nextElementSibling;
-            // nextElem.innerHTML=("Get to work!!!");
-            console.log("Empty table")
+            bestOfferDiv.innerHTML = ("<h4>Add some products and offers to be a descent Scrooge!!</h4>");
         } else {
 
 
             var dataMap = new Map();
+            var shopMap = new Map();
             for (const offer of response) {
 
                 dataMap.set(offer.product.brand + " " + offer.product.name, offer.price);
-
+                shopMap.set(offer.product.brand + " " + offer.product.name, offer.shopName);
             }
-            // console.log(dataMap);
-            // let x = (labelsOfChart) => labelsOfChart.filter((v,index) => labelsOfChart.indexOf(v) === index)
-            // var unique = x(labelsOfChart);
+            let shopNames = Array.from(shopMap.values());
             let keys = Array.from(dataMap.keys());
             let values = Array.from(dataMap.values());
-            var bestOfferDiv = document.getElementById('bestOffers');
             var table = " <table class=\"table table-striped\">\n" +
                 "        <thead class=\"thead-light\">\n" +
                 "\n" +
                 "        <th scope=\"col\">Name</th>\n" +
                 "        <th scope=\"col\">Price</th>\n" +
+                "        <th scope=\"col\">Shop</th>\n" +
                 "        </thead>\n" +
                 "        <tbody>";
+            var randomDataToshow = new Set();
 
-            for (var i = 0; i < keys.length; i++) {
-                table += "<tr><td>" + keys[i] + "</td><td>" + values[i] + "</td></tr>";
+            while(randomDataToshow.size<3){
+                randomDataToshow.add(Math.floor(Math.random()*(keys.length-0)+0));
             }
+
+            var arrayFromData = Array.from(randomDataToshow);
+
+            table += "<tr><td>" + keys[arrayFromData[0]] + "</td><td>" + values[arrayFromData[0]] + "</td><td>" + shopNames[arrayFromData[0]] + "</td></tr>";
+            table += "<tr><td>" + keys[arrayFromData[1]] + "</td><td>" + values[arrayFromData[1]] + "</td><td>" + shopNames[arrayFromData[1]] + "</td></tr>";
+            table += "<tr><td>" + keys[arrayFromData[2]] + "</td><td>" + values[arrayFromData[2]] + "</td><td>" + shopNames[arrayFromData[2]] + "</td></tr>";
             table += "</tbody></table>";
             bestOfferDiv.innerHTML = table;
 

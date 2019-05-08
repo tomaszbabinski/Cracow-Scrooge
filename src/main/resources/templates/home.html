@@ -41,6 +41,9 @@
                 <li class="nav-item">
                     <a class="nav-link"> History </a>
                 </li>
+                <li class="nav-item mr-auto">
+                    <a class="nav-link" th:href="@{/user/logout}"> Logout </a>
+                </li>
             </ul>
 
             <strong th:text="'Welcome '+${userName}+'!'" class="mr-3"></strong>
@@ -65,11 +68,11 @@
                     <canvas id="myChart"></canvas>
                 </div>
 
-                <div class="col-md-4 mt-sm-5 offset-md-1">
+                <div class="col-md-5 mt-sm-5">
                     <h4 id="totalSavings" style="text-align: center">Scrooge c'mon! Find some nice offers!!</h4>
                 </div>
 
-                <div id="bestOffers" class="col-md-10 mt-sm-5 offset-md-1">
+                <div id="bestOffers" class="col-md-12 mt-sm-5">
 
                 </div>
             </div>

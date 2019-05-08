@@ -69,6 +69,15 @@ public class UserController {
                 return "/home";
             }
         }
+
+
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession s){
+        s.removeAttribute("loggedInUser");
+
+        return "redirect:/home";
     }
 
 
