@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     renderChart();
     renderBestOffersPerProduct();
-    setInterval(renderBestOffersPerProduct,1000*15);
+    setInterval(renderBestOffersPerProduct, 1000 * 15);
 
 });
 
@@ -17,7 +17,7 @@ function renderChart() {
     var totalSavings = document.getElementById('totalSavings');
     var savings;
 
-    fetch("http://localhost:8080/purchase/chart").then(function (response) {
+    fetch("/purchase/chart").then(function (response) {
         return response.json();
     }).then(function (response) {
 
@@ -75,6 +75,7 @@ function renderChart() {
             });
 
             savings = values.reduce(getSum)
+            savings = Math.round(savings*100)/100;
             totalSavings.innerText = "Hey Scrooge you managed to save " + savings.toString() + " money!!!";
         }
     })
@@ -87,7 +88,7 @@ function getSum(total, num) {
 function renderBestOffersPerProduct() {
 
 
-    fetch("http://localhost:8080/offer/bestOffers").then(function (response) {
+    fetch("/offer/bestOffers").then(function (response) {
         return response.json();
     }).then(function (response) {
 
@@ -109,6 +110,7 @@ function renderBestOffersPerProduct() {
             let keys = Array.from(dataMap.keys());
             let values = Array.from(dataMap.values());
             var table = " <table class=\"table table-striped\">\n" +
+                "<caption style='text-align: center'>Your best offers</caption>\n" +
                 "        <thead class=\"thead-light\">\n" +
                 "\n" +
                 "        <th scope=\"col\">Name</th>\n" +
@@ -118,8 +120,8 @@ function renderBestOffersPerProduct() {
                 "        <tbody>";
             var randomDataToshow = new Set();
 
-            while(randomDataToshow.size<3){
-                randomDataToshow.add(Math.floor(Math.random()*(keys.length-0)+0));
+            while (randomDataToshow.size < 3) {
+                randomDataToshow.add(Math.floor(Math.random() * (keys.length - 0) + 0));
             }
 
             var arrayFromData = Array.from(randomDataToshow);

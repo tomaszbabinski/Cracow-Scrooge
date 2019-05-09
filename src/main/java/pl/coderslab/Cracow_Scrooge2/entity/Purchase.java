@@ -38,6 +38,8 @@ public class Purchase {
 
     private Integer quantity;
 
+    private LocalDate purchaseDate;
+
     public Purchase(PurchaseDto purchaseDto) {
         this.user = purchaseDto.getUser();
         this.product = purchaseDto.getProduct();

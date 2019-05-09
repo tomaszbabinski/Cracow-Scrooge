@@ -1,3 +1,4 @@
+
 body
 {
     background-color:#005c69;
@@ -8,5 +9,14 @@ body
 
 .bg-scrooge{
     background-color: darkcyan !important;
+}
+
+td{
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    font-weight: bolder;
+    color: orangered;
+
 }
 

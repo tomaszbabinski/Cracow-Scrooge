@@ -11,6 +11,7 @@ import pl.coderslab.Cracow_Scrooge2.repository.OfferRepository;
 import pl.coderslab.Cracow_Scrooge2.repository.ProductRepository;
 import pl.coderslab.Cracow_Scrooge2.repository.PurchaseRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -47,6 +48,7 @@ public class PurchaseController {
         purchase.setOfferPrice(purchaseDto.getOffer().getPrice());
         Double savings = ((averagePrice-purchase.getOfferPrice())*(purchaseDto.getQuantity()));
         purchase.setSavedMoney(savings);
+        purchase.setPurchaseDate(LocalDate.now());
         purchaseRepository.save(purchase);
         return "redirect:/home";
     }

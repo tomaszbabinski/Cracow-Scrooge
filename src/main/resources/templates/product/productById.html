@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script rel="stylesheet" src="/js/tableRender.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 
 <body>
@@ -44,10 +45,10 @@
             </td>
             <td>
                 <a id="start" th:if="${product.isActive == 'No'}" th:attr="url=@{'/product/start/'+${product.id}}">
-                    <span class="glyphicon glyphicon-play"></span>
+                    <span class="glyphicon glyphicon-play" style="color:greenyellow"></span>
                 </a>
                 <a id="stop" th:if="${product.isActive == 'Yes'}"th:attr="url=@{'/product/stop/'+${product.id}}">
-                    <span class="glyphicon glyphicon-stop"></span>
+                    <span class="glyphicon glyphicon-stop" style="color:orangered"></span>
                 </a>
             </td>
         </tr>
