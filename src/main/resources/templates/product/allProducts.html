@@ -23,6 +23,7 @@
         <th scope="col">Name</th>
         <th scope="col">brand</th>
         <th scope="col">Category</th>
+        <th scope="col">Usage per days</th>
 
         </thead>
         <tbody>
@@ -33,6 +34,8 @@
                 </td>
                 <td th:text="${product.brand}"/>
                 <td th:text="${product.group.name}"/>
+                <td th:if="${product.averageEfficiency != 0}" th:text="${product.averageEfficiency}"/>
+                <td th:if="${product.averageEfficiency == 0}" th:text="na"/>
 
             </tr>
         </th:block>

@@ -19,6 +19,7 @@
         <thead class="thead-light text-center">
         <th scope="col" class="text-center">Name</th>
         <th scope="col" class="text-center">brand</th>
+        <th scope="col" class="text-center">Usage</th>
         <th scope="col" class="text-center">Edit</th>
         <th scope="col" class="text-center">Remove</th>
         <th scope="col" class="text-center">Offer</th>
@@ -28,6 +29,8 @@
         <tr>
             <td th:text="${product.name}"/>
             <td th:text="${product.brand}"/>
+            <td th:if="${product.averageEfficiency != 0}" th:text="${product.averageEfficiency}"/>
+            <td th:if="${product.averageEfficiency == 0}" th:text="na"/>
             <td>
                 <a th:href="@{'/product/edit/'+${product.id}}">
                     <span class="glyphicon glyphicon-pencil"></span>
