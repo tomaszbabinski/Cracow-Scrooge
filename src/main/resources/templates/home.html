@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<header>
+<header th:fragment="navigationBar">
 
     <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
         <a class="navbar-brand" href="/home"><img th:src="@{/images/DRAGON2.png}" width="60" height="60"
@@ -22,7 +22,7 @@
 
         <div class="collapse navbar-collapse" id="mainmenu">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" th:href="@{/home}"> Home </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -46,7 +46,7 @@
                 </li>
             </ul>
 
-            <strong th:text="'Welcome '+${userName}+'!'" class="mr-3"></strong>
+            <strong id="welcomeUser" th:text="'Welcome '+${userName}+'!'" class="mr-3"></strong>
 
             <form class="form-inline" th:action="@{/product/findByName}" method="get">
                 <input class="form-control mr-1" type="search" placeholder="Search a product" name="product">
@@ -70,6 +70,8 @@
 
                 <div class="col-md-5 mt-sm-5">
                     <h4 id="totalSavings" style="text-align: center">Scrooge c'mon! Find some nice offers!!</h4>
+                    <br>
+                    <h4 style="text-align: center">How to become nice Scrooge?</h4>
                 </div>
 
                 <div id="bestOffers" class="col-md-12 mt-sm-5">

@@ -31,6 +31,8 @@ public class Purchase {
 
     private Double offerPrice;
 
+    private Double averagePrice;
+
     private Double savedMoney;
 
     private Integer quantity;
@@ -41,6 +43,7 @@ public class Purchase {
         this.offer = purchaseDto.getOffer();
         this.offerPrice = purchaseDto.getOffer().getPrice();
         this.quantity = purchaseDto.getQuantity();
+        this.averagePrice = purchaseDto.getAveragePrice();
     }
 
 

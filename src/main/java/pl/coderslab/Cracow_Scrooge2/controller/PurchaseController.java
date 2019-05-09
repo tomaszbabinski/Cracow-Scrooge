@@ -40,7 +40,9 @@ public class PurchaseController {
     @PostMapping("/add")
     public String addPurchaseProcess(@ModelAttribute PurchaseDto purchaseDto, @SessionAttribute("loggedInUser") User user) {
         Purchase purchase = new Purchase(purchaseDto);
-        Double averagePrice = (Math.round(offerRepository.findAveragePriceByProductId(purchase.getProduct().getId())) * 100 / 100.00);
+        Double avrToTransfer = offerRepository.findAveragePriceByProductId(purchase.getProduct().getId());
+        Double averagePrice = (double) (Math.round(avrToTransfer * 100.0)) / 100.0;
+        purchase.setAveragePrice(averagePrice);
         purchase.setUser(user);
         purchase.setOfferPrice(purchaseDto.getOffer().getPrice());
         Double savings = ((averagePrice-purchase.getOfferPrice())*(purchaseDto.getQuantity()));

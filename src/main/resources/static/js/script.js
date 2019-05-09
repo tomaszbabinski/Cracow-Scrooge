@@ -45,6 +45,7 @@ function renderChart() {
 
             let keys = Array.from(dataMap.keys());
             let values = Array.from(dataMap.values())
+            let borderColor = 'rgb(151, 166, 234)';
 
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
@@ -54,10 +55,20 @@ function renderChart() {
                 data: {
                     labels: keys,
                     datasets: [{
-                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: ["#33658a", "#f26419", "#f6ae2d", "#86bbd8"],
+                        borderColor: borderColor,
+                        colors: "#FFFFFF",
                         data: values
                     }]
+                },
+
+                options: {
+                    legend: {
+                        labels: {
+                            fontColor: 'white',
+                            fontSize: 20
+                        }
+                    }
                 }
 
 

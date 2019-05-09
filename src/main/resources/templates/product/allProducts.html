@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script rel="stylesheet" src="/js/script.js"></script>
+    <script rel="stylesheet" src="/js/tableRender.js"></script>
 
 </head>
 
@@ -26,16 +26,16 @@
 
         </thead>
         <tbody>
-            <th:block th:each="product : ${products}">
-                <tr>
-                    <td>
-                        <a th:href="@{'/product/getById/'+${product.id}}" th:text="${product.name}"></a>
-                    </td>
-                    <td th:text="${product.brand}" />
-                    <td th:text="${product.group.name}" />
+        <th:block th:each="product : ${products}">
+            <tr>
+                <td>
+                    <a th:href="@{'/product/getById/'+${product.id}}" th:text="${product.name}"></a>
+                </td>
+                <td th:text="${product.brand}"/>
+                <td th:text="${product.group.name}"/>
 
-                </tr>
-            </th:block>
+            </tr>
+        </th:block>
         </tbody>
     </table>
 

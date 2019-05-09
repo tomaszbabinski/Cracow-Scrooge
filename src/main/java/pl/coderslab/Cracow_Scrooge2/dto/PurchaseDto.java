@@ -20,6 +20,8 @@ public class PurchaseDto {
 
     private Offer offer;
 
+    private Double averagePrice;
+
     private Double offerPrice;
 
     private Double savedMoney;
