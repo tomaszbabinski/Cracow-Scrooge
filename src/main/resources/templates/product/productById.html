@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script rel="stylesheet" src="/js/script.js"></script>
+    <script rel="stylesheet" src="/js/tableRender.js"></script>
 </head>
 
 <body>
@@ -21,6 +21,7 @@
         <th scope="col" class="text-center">Edit</th>
         <th scope="col" class="text-center">Remove</th>
         <th scope="col" class="text-center">Offer</th>
+        <th scope="col" class="text-center">Start/Stop using</th>
         </thead>
         <tbody>
         <tr>
@@ -41,6 +42,14 @@
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </td>
+            <td>
+                <a id="start" th:if="${product.isActive == 'No'}" th:attr="url=@{'/product/start/'+${product.id}}">
+                    <span class="glyphicon glyphicon-play"></span>
+                </a>
+                <a id="stop" th:if="${product.isActive == 'Yes'}"th:attr="url=@{'/product/stop/'+${product.id}}">
+                    <span class="glyphicon glyphicon-stop"></span>
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -51,6 +60,7 @@
 
         <th scope="col" class="text-center">Price</th>
         <th scope="col" class="text-center">Shop</th>
+        <th scope="col" class="text-center">Added on</th>
         <th scope="col" class="text-center">Add purchase</th>
 
         </thead>
@@ -59,6 +69,7 @@
             <tr>
                 <td th:text="${offer.price}"/>
                 <td th:text="${offer.shopName}"/>
+                <td th:text="${offer.addedAt}"/>
                 <td>
                     <a th:href="@{'/purchase/add/'+${product.id}+'/'+${offer.id}}">
                         <span class="glyphicon glyphicon-usd"></span>

@@ -9,8 +9,10 @@ import pl.coderslab.Cracow_Scrooge2.entity.ProductGroup;
 import pl.coderslab.Cracow_Scrooge2.entity.User;
 import pl.coderslab.Cracow_Scrooge2.repository.ProductGroupRepository;
 import pl.coderslab.Cracow_Scrooge2.repository.ProductRepository;
+import pl.coderslab.Cracow_Scrooge2.service.efficiency.EfficiencyService;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -19,11 +21,13 @@ public class ProductController {
 
     private ProductRepository productRepository;
     private ProductGroupRepository productGroupRepository;
+    private EfficiencyService efficiencyService;
 
     @Autowired
-    public ProductController(ProductRepository productRepository, ProductGroupRepository productGroupRepository) {
+    public ProductController(ProductRepository productRepository, ProductGroupRepository productGroupRepository, EfficiencyService efficiencyService) {
         this.productRepository = productRepository;
         this.productGroupRepository = productGroupRepository;
+        this.efficiencyService = efficiencyService;
     }
 
     @GetMapping("/add")
@@ -35,6 +39,7 @@ public class ProductController {
     @PostMapping("/add")
     public String addProcess(@ModelAttribute Product product, HttpSession httpSession){
         product.setUser((User) httpSession.getAttribute("loggedInUser"));
+        product.setIsActive("No");
         productRepository.save(product);
         return "redirect:/product/all";
     }
@@ -84,6 +89,27 @@ public class ProductController {
         User user = (User) session.getAttribute("loggedInUser");
         model.addAttribute("products",productRepository.findAllByNameAndUserId(product,user.getId()));
         return "product/allProducts";
+    }
+
+    @GetMapping("/start/{id}")
+    public void start(@PathVariable Long id){
+        Product product = productRepository.getOne(id);
+        product.setIsActive("Yes");
+        product.setBegOfUsage(LocalDate.now());
+        productRepository.save(product);
+    }
+
+    @GetMapping("/stop/{id}")
+    public void stop(@PathVariable Long id){
+        Product product = productRepository.getOne(id);
+        product.setIsActive("No");
+        product.setEndOfUsage(LocalDate.now());
+        efficiencyService.saveEfficiency(product);
+        product = productRepository.getOne(id);
+        product.setBegOfUsage(null);
+        product.setEndOfUsage(null);
+        productRepository.save(product);
+
     }
 
 

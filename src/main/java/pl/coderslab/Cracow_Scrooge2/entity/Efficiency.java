@@ -1,38 +1,30 @@
 package pl.coderslab.Cracow_Scrooge2.entity;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pl.coderslab.Cracow_Scrooge2.dto.OfferDto;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "offers")
+@Table(name = "efficiencies")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Offer {
+public class Efficiency {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
+    @JsonIgnore
     private Product product;
 
-    private Double price;
+    private LocalDate startUsage;
+    private LocalDate endUsage;
 
-    private String shopName;
-
-    private LocalDate addedAt;
-
-    public Offer(OfferDto offerDto){
-        this.setShopName(offerDto.getShopName());
-        this.setPrice(offerDto.getPrice());
-        this.setAddedAt(offerDto.getAddedAt());
-
-    }
+    private Long efficiencyInDays;
 }

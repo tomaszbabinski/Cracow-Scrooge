@@ -22,6 +22,8 @@ public interface OfferRepository extends JpaRepository<Offer,Long> {
     @Query("SELECT o FROM Offer o WHERE o.price = (SELECT MIN(oo.price) FROM Offer oo WHERE oo.product = o.product) AND o.product.user.id=?1")
     List<Offer> findBestOffersForAgivenProductAndUserId(Long id);
 
+    List<Offer> findAllByProductUserId(Long id);
+
 
 //    SELECT e FROM Entity e
 //    WHERE e.timestamp = (SELECT MAX(ee.timestamp) FROM Entity ee WHERE ee.entityId = e.entityId)

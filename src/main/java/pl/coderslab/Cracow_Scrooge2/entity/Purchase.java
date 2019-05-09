@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import pl.coderslab.Cracow_Scrooge2.dto.PurchaseDto;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "purchases")

@@ -10,6 +10,7 @@ import pl.coderslab.Cracow_Scrooge2.entity.User;
 import pl.coderslab.Cracow_Scrooge2.repository.OfferRepository;
 import pl.coderslab.Cracow_Scrooge2.repository.ProductRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -36,8 +37,22 @@ public class OfferController {
     public String processOfferAdd(@ModelAttribute OfferDto offerDto,@PathVariable Long id){
         Offer offer = new Offer(offerDto);
         offer.setProduct(productRepository.getOne(id));
+        offer.setAddedAt(LocalDate.now());
         offerRepository.save(offer);
         return "redirect:/product/getById/"+id;
+    }
+
+    @GetMapping("/getById/{id}")
+    public String getById(@PathVariable Long id, Model model){
+        Offer offer = this.offerRepository.getOne(id);
+        model.addAttribute("offer",offer);
+        return "offer/offerById";
+    }
+
+    @GetMapping("/all")
+    public String showAllOffers(Model model,@SessionAttribute("loggedInUser") User user){
+        model.addAttribute("offers",offerRepository.findAllByProductUserId(user.getId()));
+        return "offer/all";
     }
 
     @GetMapping("/bestOffers")

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -38,4 +39,10 @@ public class Product {
     @JsonIgnore
     private List<Offer> offers;
 
+    @OneToMany(mappedBy = "product")
+    private List<Efficiency> efficiencies;
+
+    private String isActive;
+    private LocalDate begOfUsage;
+    private LocalDate endOfUsage;
 }
