@@ -9,8 +9,10 @@ import pl.coderslab.Cracow_Scrooge2.entity.Offer;
 import pl.coderslab.Cracow_Scrooge2.entity.User;
 import pl.coderslab.Cracow_Scrooge2.repository.OfferRepository;
 import pl.coderslab.Cracow_Scrooge2.repository.ProductRepository;
+import pl.coderslab.Cracow_Scrooge2.service.offer.OfferService;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -19,11 +21,13 @@ public class OfferController {
 
     private ProductRepository productRepository;
     private OfferRepository offerRepository;
+    private OfferService offerService;
 
     @Autowired
-    public OfferController(ProductRepository productRepository, OfferRepository offerRepository) {
+    public OfferController(ProductRepository productRepository, OfferRepository offerRepository,OfferService offerService) {
         this.productRepository = productRepository;
         this.offerRepository = offerRepository;
+        this.offerService = offerService;
     }
 
     @GetMapping("/add/{id}")
@@ -59,6 +63,21 @@ public class OfferController {
     @ResponseBody
     public List<Offer> renderChart(@SessionAttribute("loggedInUser") User user){
         return offerRepository.findBestOffersForAgivenProductAndUserId(user.getId());
+    }
+
+    @GetMapping("/allShops")
+    public String allShops(Model model,@SessionAttribute("loggedInUser") User user){
+        List<Offer> offers = offerRepository.findAllByProductUserId(user.getId());
+        model.addAttribute("shops",offerService.getAllShops(offers));
+        return "offer/shops";
+    }
+
+    @GetMapping("/getByShopName/{shopName}")
+    public String offerByShopName(Model model,@SessionAttribute("loggedInUser") User user,@PathVariable String shopName){
+        String searchedShop = shopName.toLowerCase();
+        List<Offer> offers = offerRepository.findAllByProductUserId(user.getId());
+        model.addAttribute("byShopName",offerService.getByShopName(offers,searchedShop));
+        return "offer/byShopName";
     }
 
 }

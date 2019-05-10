@@ -25,6 +25,7 @@ public interface OfferRepository extends JpaRepository<Offer,Long> {
     List<Offer> findAllByProductUserId(Long id);
 
 
+
 //    SELECT e FROM Entity e
 //    WHERE e.timestamp = (SELECT MAX(ee.timestamp) FROM Entity ee WHERE ee.entityId = e.entityId)
 
