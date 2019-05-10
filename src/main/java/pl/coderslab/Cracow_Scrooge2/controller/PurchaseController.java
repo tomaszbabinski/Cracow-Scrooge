@@ -59,4 +59,10 @@ public class PurchaseController {
         return purchaseRepository.findAllByUser(user);
     }
 
+    @GetMapping("/all")
+    public String getAll(Model model,@SessionAttribute("loggedInUser") User user){
+        model.addAttribute("purchases",purchaseRepository.findAllByUser(user));
+        return "purchase/all";
+    }
+
 }
