@@ -13,8 +13,8 @@
 
 <header th:fragment="navigationBar">
 
-    <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
-        <a class="navbar-brand" href="/home"><img th:src="@{/images/DRAGON2.png}" width="60" height="60"
+    <nav class="navbar navbar-dark bg-scrooge-nav navbar-expand-lg ">
+        <a class="navbar-brand" href="/home"><img th:src="@{/images/DRAGON3.png}" width="60" height="60"
                                                   class="display-inline-block mr-2"> Cracow Scrooge</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu">
             <span class="navbar-toggler-icon"></span>
@@ -62,17 +62,21 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-7 mt-sm-5">
-                    <h4 id="chartInfo" style="text-align: center">Here are your savings per category:</h4>
+                <div id="motto" class="col-md-12 mt-sm-5">
+                    <h4 style="text-align: center; text-decoration-style: wavy" class="mt-sm-2 mb-sm-2">Being Cracow Scrooge is a state of mind - no matter where you live...</h4>
+                </div>
+
+                <div id="chartDiv" class="col-md-7 mt-sm-5">
+                    <h4 id="chartInfo" style="text-align: center" class="mt-sm-1">Here are your savings per category:</h4>
                     <h4 style="text-align: center"></h4>
-                    <canvas id="myChart"></canvas>
+                    <canvas id="myChart" class="mb-sm-2"></canvas>
                 </div>
 
                 <div class="col-md-5 mt-sm-5">
                     <h4 id="totalSavings" style="text-align: center">Scrooge c'mon! Find some nice offers!!</h4>
                     <br>
                     <h4 style="text-align: center">How to become a decent Scrooge?</h4>
-                    <h4 style="text-align: center">Click below to find out</h4>
+                    <!--<h4 style="text-align: center">Click below to find out</h4>-->
                     <div class="panel-group">
                         <div class="panel panel-default">
                             <div class="panel-heading">

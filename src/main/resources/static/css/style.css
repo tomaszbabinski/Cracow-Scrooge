@@ -1,10 +1,17 @@
 
 body
 {
-    background-color:#005c69;
+    /*background-color:#005c69;*/
     color: #efefef;
     font-family: 'Open Sans', sans-serif;
     font-size: 17px;
+    /*background: url("../images/whit.jpg") no-repeat;*/
+    background: url("../images/light.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
 }
 
 .bg-scrooge{
@@ -20,3 +27,41 @@ td{
 
 }
 
+.bg-scrooge-nav{
+    background-color: #33658a;
+}
+
+nav {
+    font-weight: bolder;
+}
+
+h4 {
+    font-weight: bolder;
+}
+
+caption{
+    font-weight: bolder;
+}
+#chartDiv{
+    background-color: rgba(242, 100, 25, 0.60);
+    border-radius: 40px;
+    border: thick solid #33658a;
+}
+
+#chartDiv:hover {
+    background-color: rgba(242, 100, 25, 0.80);
+
+}
+
+#motto{
+
+    background-color: rgba(134, 187, 216, 0.80);
+    border-radius: 40px;
+    border: thick solid #33658a;
+
+}
+
+#motto:hover {
+    background-color: rgba(134, 187, 216, 0.90);
+
+}
