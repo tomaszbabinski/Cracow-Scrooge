@@ -2,67 +2,75 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Edit product</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Adding Category</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-
+<header th:replace="fragments/navProdAll::navigationBar"></header>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+    <div class="row mt-sm-5">
+        <div class="col-md-8 offset-md-2 products mt-sm-5">
             <form th:action="@{'/product/edit/'+${id}}" th:object="${product}"
-                  method="post" class="form-horizontal" role="form">
-                  <h>Edit Product</h>
+                  method="post" class="form-horizontal mt-sm-3" role="form">
+                <h4 style="text-align: center" class="mt-sm-2">Edit Product</h4>
 
                 <!--Excluding below per SPRING warning information-->
                 <!--<div class="form-group">-->
-                    <!--<div class="col-sm-9">-->
-                        <!--<input type="hidden" th:field="*{id}"-->
-                               <!--class="form-control"/>-->
-                    <!--</div>-->
+                <!--<div class="col-sm-9">-->
+                <!--<input type="hidden" th:field="*{id}"-->
+                <!--class="form-control"/>-->
                 <!--</div>-->
-                    <div class="form-group">
-                      <div class="col-sm-9">
-                      <input type="text" th:field="*{name}"
-                             placeholder="Name of the product" class="form-control"/>
-                      </div>
-                    </div>
-
+                <!--</div>-->
                 <div class="form-group">
-                    <div class="col-sm-9">
+                        <input type="text" th:field="*{name}"
+                               placeholder="Name of the product" class="form-control"/>
+                </div>
+                <div class="form-group">
                         <input type="text" th:field="*{brand}"
                                placeholder="Name of the brand" class="form-control"/>
-                    </div>
                 </div>
-
                 <div class="form-group">
-                    <div class="col-sm-9">
                         <input type="hidden" th:field="*{user.id}"
                                class="form-control"/>
-                    </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-9">
                         <input type="hidden" th:field="*{group.id}"
                                class="form-control"/>
-                    </div>
                 </div>
-
                 <div class="form-group">
-                    <div class="col-sm-9">
-                        <button type="submit" class="btn btn-primary btn-block">Save edited product</button>
-                    </div>
+                    <input type="hidden" th:field="*{isActive}"
+                           class="form-control"/>
                 </div>
-
-
-
+                <div class="form-group">
+                    <input type="hidden" th:field="*{begOfUsage}"
+                           class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" th:field="*{endOfUsage}"
+                           class="form-control"/>
+                </div>
+                <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block mb-sm-3">Save edited product</button>
+                </div>
             </form>
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>

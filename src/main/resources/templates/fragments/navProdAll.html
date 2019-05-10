@@ -3,11 +3,11 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
-    <title>Home page</title>
 </head>
 <body>
 
@@ -46,9 +46,7 @@
                 </li>
             </ul>
 
-            <strong id="welcomeUser" th:text="'Welcome '+${userName}+'!'" class="mr-3"></strong>
-
-            <form class="form-inline" th:action="@{/product/findByName}" method="get">
+                 <form class="form-inline" th:action="@{/product/findByName}" method="get">
                 <input class="form-control mr-1" type="search" placeholder="Search a product" name="product">
                 <button class="btn btn-light" type="submit">Search</button>
             </form>
@@ -57,53 +55,6 @@
     </nav>
 
 </header>
-<main>
-    <section>
-        <div class="container">
-            <div class="row">
-
-                <div id="motto" class="col-md-12 mt-sm-5">
-                    <h4 style="text-align: center; text-decoration-style: wavy" class="mt-sm-2 mb-sm-2">Being Cracow Scrooge is a state of mind - no matter where you live...</h4>
-                </div>
-
-                <div id="chartDiv" class="col-md-7 mt-sm-5">
-                    <h4 id="chartInfo" style="text-align: center" class="mt-sm-3">Here are your savings per category:</h4>
-                    <canvas id="myChart" class="mb-sm-2"></canvas>
-                </div>
-
-                <div id="totalAndAdvises" class="col-md-4 offset-md-1 mt-sm-5">
-                    <h4 id="totalSavings" style="text-align: center" class="mt-sm-3">Scrooge c'mon! Find some nice offers!!</h4>
-                    <br>
-                    <h4 style="text-align: center">How to become a decent Scrooge?</h4>
-                    <!--<h4 style="text-align: center">Click below to find out</h4>-->
-                    <div class="panel-group">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title" style="text-align: center">
-                                    <a id="link" data-toggle="collapse" href="#advises" style="text-decoration: none; color: #86bbd8 ">Golden rules</a>
-                                </h4>
-                            </div>
-                            <div id="advises" class="panel-collapse collapse">
-                                <ul class="list-group mb-sm-3">
-                                    <li class="list-group-item bg-scrooge">Start with adding categories</li>
-                                    <li class="list-group-item bg-scrooge">Add your daily products</li>
-                                    <li class="list-group-item bg-scrooge">Spend some time to find good offers</li>
-                                    <li class="list-group-item bg-scrooge">Insert as many offers as possible</li>
-                                    <li class="list-group-item bg-scrooge">Register your purchases</li>
-                                    <li class="list-group-item bg-scrooge">Measure the usability of products</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="bestOffers" class="col-md-12 mt-sm-5">
-
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -113,8 +64,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-<script rel="stylesheet" src="/js/script.js"></script>
 </body>
 </html>
-

@@ -15,15 +15,17 @@ body
 }
 
 .bg-scrooge{
-    background-color: darkcyan !important;
+    background-color: #33658a;
+    opacity: 0.8;
+    font-weight: bolder;
 }
 
-td{
+td,tr,th{
 
     font-family: 'Open Sans', sans-serif;
     font-size: 17px;
     font-weight: bolder;
-    color: orangered;
+    color: white;
 
 }
 
@@ -41,6 +43,8 @@ h4 {
 
 caption{
     font-weight: bolder;
+    color: rgba(242, 100, 25,1.0);
+
 }
 #chartDiv{
     background-color: rgba(242, 100, 25, 0.60);
@@ -55,13 +59,52 @@ caption{
 
 #motto{
 
-    background-color: rgba(134, 187, 216, 0.80);
+    background-color: rgba(51, 101, 138, 0.60);
     border-radius: 40px;
     border: thick solid #33658a;
+
 
 }
 
 #motto:hover {
-    background-color: rgba(134, 187, 216, 0.90);
+    background-color: rgba(51, 101, 138, 0.80);
 
 }
+
+#totalAndAdvises{
+    background-color: rgba(242, 100, 25, 0.60);
+    border-radius: 40px;
+    border: thick solid #33658a;
+}
+
+#totalAndAdvises:hover{
+    background-color: rgba(242, 100, 25, 0.80);
+}
+
+#bestOffers{
+    background-color: rgba(51, 101, 138, 0.60);
+    border-radius: 40px;
+    border: thick solid #33658a;
+}
+
+#bestOffers:hover {
+    background-color: rgba(51, 101, 138, 0.80);
+
+}
+
+.products{
+    background-color: rgba(51, 101, 138, 0.60);
+    border-radius: 40px;
+    border: thick solid #33658a;
+}
+.products a{
+    text-decoration: none;
+    color: #f6ae2d;
+}
+
+.scrooge-orange{
+    background-color: rgba(242, 100, 25, 0.60);
+    border-radius: 40px;
+    border: thick solid #33658a;
+}
+

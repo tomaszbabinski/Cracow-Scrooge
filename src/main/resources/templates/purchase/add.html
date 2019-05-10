@@ -4,76 +4,64 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Adding Purchase</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Adding Category</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-
+<header th:replace="fragments/navProdAll::navigationBar"></header>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+    <div class="row mt-sm-5">
+        <div class="col-md-8 offset-md-2 products mt-sm-5">
             <form th:action="@{/purchase/add}" th:object="${purchaseDto}"
                   method="post" class="form-horizontal" role="form">
-                <h>Adding Purchase</h>
+                <h4 style="text-align: center" class="mt-sm-2">Adding Purchase</h4>
                 <div class="form-group">
-                    <div class="col-sm-9">
-                        <input th:readonly="readonly" type="text" th:field="*{product.name}"
+                          <input th:readonly="readonly" type="text" th:field="*{product.name}"
                                placeholder="Name of the category" class="form-control"/>
-                    </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-9">
                         <input th:readonly="readonly" type="text" th:field="*{offer.shopName}"
                                placeholder="Name of the category" class="form-control"/>
-                    </div>
                 </div>
-
                 <div class="form-group">
-                    <div class="col-sm-9">
                         <input th:readonly="readonly" type="text" th:field="*{offer.price}"
                                placeholder="Name of the category" class="form-control"/>
-                    </div>
                 </div>
-
-
                 <div class="form-group">
-                    <div class="col-sm-9">
                         <input type="hidden" th:field="*{product.id}"
                                class="form-control"/>
-                    </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-9">
                         <input type="hidden" th:field="*{offer.id}"
                                class="form-control"/>
-                    </div>
                 </div>
-
                 <div class="form-group">
-                    <div class="col-sm-9">
                         <label>Add quantity
                             <select th:field="*{quantity}">
                                 <option th:each="i : ${#numbers.sequence(1, 10)}" th:value="${i}" th:text="${i}">
                                 </option>
                             </select>
                         </label>
-                    </div>
                 </div>
-
                 <div class="form-group">
-                    <div class="col-sm-9">
-                        <button type="submit" class="btn btn-primary btn-block">Add the purchase</button>
-                    </div>
+                        <button type="submit" class="btn btn-primary btn-block mb-sm-3">Add the purchase</button>
                 </div>
-
             </form>
         </div>
     </div>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 </html>
 

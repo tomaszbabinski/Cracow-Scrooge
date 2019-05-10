@@ -3,47 +3,63 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Offer by Id</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Adding offer to the product</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script rel="stylesheet" src="/js/tableRender.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
-
 <body>
+<header th:replace="fragments/navProdAll::navigationBar"></header>
 
 <div class="container">
-
-    <table class="table table-striped text-center">
-        <thead class="thead-light text-center">
-        <th scope="col" class="text-center">Product</th>
-        <th scope="col" class="text-center">Brand</th>
-        <th scope="col" class="text-center">Shop name</th>
-        <th scope="col" class="text-center">Price</th>
-        <th scope="col" class="text-center">Added at</th>
-        <th scope="col" class="text-center">Edit</th>
-        <th scope="col" class="text-center">Remove</th>
-        </thead>
-        <tbody>
-        <tr>
-            <td th:text="${offer.product.name}"/>
-            <td th:text="${offer.product.brand}"/>
-            <td th:text="${offer.shopName}"/>
-            <td th:text="${offer.price}"/>
-            <td th:text="${offer.addedAt}"/>
-            <td>
-                <a th:href="@{'/offer/edit/'+${offer.id}}">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </a>
-            </td>
-            <td>
-                <a th:href="@{'/offer/remove/'+${offer.id}}">
-                    <span class="glyphicon glyphicon-remove-circle"></span>
-                </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="row mt-sm-5">
+        <div class="col-md-8 offset-md-2 products mt-sm-5">
+            <table class="table table-striped text-center mt-sm-5">
+                <thead class="thead-light text-center">
+                <th scope="col" class="text-center">Product</th>
+                <th scope="col" class="text-center">Brand</th>
+                <th scope="col" class="text-center">Shop name</th>
+                <th scope="col" class="text-center">Price</th>
+                <th scope="col" class="text-center">Added at</th>
+                <th scope="col" class="text-center">Edit</th>
+                <th scope="col" class="text-center">Remove</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${offer.product.name}"/>
+                    <td th:text="${offer.product.brand}"/>
+                    <td th:text="${offer.shopName}"/>
+                    <td th:text="${offer.price}"/>
+                    <td th:text="${offer.addedAt}"/>
+                    <td>
+                        <a th:href="@{'/offer/edit/'+${offer.id}}">
+                            <span class="fa fa-pencil"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/offer/remove/'+${offer.id}}">
+                            <span class="fa fa-remove"></span>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </html>

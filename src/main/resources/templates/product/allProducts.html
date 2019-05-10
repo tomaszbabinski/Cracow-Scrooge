@@ -3,10 +3,10 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>Show all products</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -16,36 +16,46 @@
 
 <body>
 
+<header th:replace="fragments/navProdAll::navigationBar"></header>
+
 <div class="container">
 
-    <table class="table table-striped">
-        <thead class="thead-light">
+    <div class="row mt-sm-5">
 
-        <th scope="col">Name</th>
-        <th scope="col">brand</th>
-        <th scope="col">Category</th>
-        <th scope="col">Usage per days</th>
+        <div class="col-md-12 products mt-sm-5">
 
-        </thead>
-        <tbody>
-        <th:block th:each="product : ${products}">
-            <tr>
-                <td>
-                    <a th:href="@{'/product/getById/'+${product.id}}" th:text="${product.name}"></a>
-                </td>
-                <td th:text="${product.brand}"/>
-                <td th:text="${product.group.name}"/>
-                <td th:if="${product.averageEfficiency != 0}" th:text="${product.averageEfficiency}"/>
-                <td th:if="${product.averageEfficiency == 0}" th:text="na"/>
+            <table id="allProducts" class="table mt-sm-5">
+                <thead class="thead-light">
 
-            </tr>
-        </th:block>
-        </tbody>
-    </table>
+                <th scope="col">Name</th>
+                <th scope="col">brand</th>
+                <th scope="col">Category</th>
+                <th scope="col">Usage per days</th>
 
+                </thead>
+                <tbody>
+                <th:block th:each="product : ${products}">
+                    <tr>
+                        <td>
+                            <a th:href="@{'/product/getById/'+${product.id}}" th:text="${product.name}"></a>
+                        </td>
+                        <td th:text="${product.brand}"/>
+                        <td th:text="${product.group.name}"/>
+                        <td th:if="${product.averageEfficiency != 0}" th:text="${product.averageEfficiency}"/>
+                        <td th:if="${product.averageEfficiency == 0}" th:text="na"/>
 
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 </div>
-
-
 </body>
 </html>

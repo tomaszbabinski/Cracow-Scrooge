@@ -3,42 +3,50 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Cracow Scrooge Login!</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
-
 <body>
-<form th:action="@{/user/register}" method="get">
-    <button class="btn btn-md btn-info btn-block" type="Submit">Go To Registration Page</button>
-</form>
-
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-        <img th:src="@{/images/DRAGON2.png}" class="img-responsive center-block image"  width="100" height="100" alt="Logo" />
-            <form th:action="@{/user/login}" th:object="${loginData}" method="POST" class="form-signing">
-                <h3 class="form-signin-heading" th:text="Welcome"></h3>
-                <br/>
+    <div class="row mt-sm-5">
+        <div class="col-md-6 offset-md-3 products text-center mt-sm-5">
+            <h4 style="text-align: center" class="mt-sm-2">Cracow Scrooge</h4>
+            <form th:action="@{/user/register}" method="get" class="form-horizontal">
+                <button class="btn btn-md btn-info btn-block mb-md-2" type="Submit">Go To Registration Page</button>
+            </form>
 
-                <input type="text" th:field="*{email}"  th:placeholder="Email"
-                       class="form-control" /> <br/>
-                <input type="password"  th:placeholder="Password"
-                       th:field="*{password}"  class="form-control" /> <br />
+            <img th:src="@{/images/DRAGON3.png}" class="img-responsive center-block image mt-md-2 mb-md-2" width="100" height="100"
+                 alt="Logo"/>
+            <form th:action="@{/user/login}" th:object="${loginData}" method="POST" class="form-signing">
+                <h4 class="form-signing-heading text-center" th:text="Welcome"></h4>
+
+                <input type="text" th:field="*{email}" th:placeholder="Email"
+                       class="form-control"/> <br/>
+                <input type="password" th:placeholder="Password"
+                       th:field="*{password}" class="form-control"/> <br/>
 
                 <div align="center" th:if="${message}">
                     <p style="font-size: 20px; color: #FF1C19;">Email or Password invalid, please verify</p>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" th:text="Login"></button>
+                <button class="btn btn-lg btn-primary btn-block mb-md-3" name="Submit" value="Login" type="Submit"
+                        th:text="Login"></button>
             </form>
         </div>
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 </html>
 
