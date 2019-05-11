@@ -57,10 +57,10 @@
                 </td>
                 <td>
                     <a id="start" th:if="${product.isActive == 'No'}" th:attr="url=@{'/product/start/'+${product.id}}">
-                        <span class="fa fa-play" style="color:greenyellow"></span>
+                        <span class="fa fa-play" style="color:greenyellow; cursor: pointer"></span>
                     </a>
                     <a id="stop" th:if="${product.isActive == 'Yes'}" th:attr="url=@{'/product/stop/'+${product.id}}">
-                        <span class="fa fa-stop" style="color:orangered"></span>
+                        <span class="fa fa-stop" style="color:orangered; cursor: pointer"></span>
                     </a>
                 </td>
             </tr>

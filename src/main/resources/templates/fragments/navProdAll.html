@@ -52,6 +52,9 @@
                  <form class="form-inline" th:action="@{/product/findByName}" method="get">
                 <input class="form-control mr-1" type="search" placeholder="Search a product" name="product">
                 <button class="btn btn-light" type="submit">Search</button>
+                     <form>
+                         <input type="button" class="btn btn-light ml-sm-1" value="Go back!" onclick="history.back()">
+                     </form>
             </form>
 
         </div>

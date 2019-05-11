@@ -31,7 +31,9 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td th:text="${offer.product.name}"/>
+                    <td>
+                        <a th:href="@{'/product/getById/'+${offer.product.id}}" th:text="${offer.product.name}"></a>
+                    </td>
                     <td th:text="${offer.product.brand}"/>
                     <td th:text="${offer.shopName}"/>
                     <td th:text="${offer.price}"/>
