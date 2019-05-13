@@ -47,7 +47,8 @@ public class PurchaseController {
         purchase.setUser(user);
         purchase.setOfferPrice(purchaseDto.getOffer().getPrice());
         Double savings = ((averagePrice-purchase.getOfferPrice())*(purchaseDto.getQuantity()));
-        purchase.setSavedMoney(savings);
+        Double savingToSave = (double) (Math.round(savings * 100.0)) / 100.0;
+        purchase.setSavedMoney(savingToSave);
         purchase.setPurchaseDate(LocalDate.now());
         purchaseRepository.save(purchase);
         return "redirect:/home";
