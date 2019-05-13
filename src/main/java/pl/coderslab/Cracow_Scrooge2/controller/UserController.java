@@ -66,7 +66,7 @@ public class UserController {
             }else{
                 httpSession.setAttribute("loggedInUser", user);
                 model.addAttribute("userName",user.getFirstName());
-                return "/home";
+                return "home";
             }
         }
 
