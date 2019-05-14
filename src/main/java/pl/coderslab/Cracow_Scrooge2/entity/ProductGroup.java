@@ -34,4 +34,7 @@ public class ProductGroup {
         this.name = productGroupDto.getName();
     }
 
+    public ProductGroup(String name) {
+        this.name = name;
+    }
 }
