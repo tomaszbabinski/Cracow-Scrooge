@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(renderBestOffersPerProduct, 1000 * 15);
 
     var divWithchart = document.getElementById("chartDiv");
-    divWithchart.addEventListener("onresize",resize)
+    divWithchart.addEventListener("onresize", resize)
 
 });
 
@@ -83,7 +83,7 @@ function renderChart() {
             });
 
             savings = values.reduce(getSum)
-            savings = Math.round(savings*100)/100;
+            savings = Math.round(savings * 100) / 100;
             totalSavings.innerText = "Hey Scrooge you managed to save " + savings.toString() + " money!!!";
 
 
@@ -118,34 +118,38 @@ function renderBestOffersPerProduct() {
                 shopMap.set(offer.product.brand + " " + offer.product.name, offer.shopName);
                 efficiencyMap.set(offer.product.brand + " " + offer.product.name, offer.product.averageEfficiency);
             }
-            let shopNames = Array.from(shopMap.values());
-            let efficiencies = Array.from(efficiencyMap.values());
-            let keys = Array.from(dataMap.keys());
-            let values = Array.from(dataMap.values());
-            var table = " <table class=\"table table-striped mt-sm-4\">\n" +
-                "<caption style='text-align: center'>Your best offers</caption>\n" +
-                "        <thead class=\"thead-light\">\n" +
-                "\n" +
-                "        <th scope=\"col\">Name</th>\n" +
-                "        <th scope=\"col\">Price</th>\n" +
-                "        <th scope=\"col\">Shop</th>\n" +
-                "        <th scope=\"col\">Efficiency</th>\n" +
-                "        </thead>\n" +
-                "        <tbody>";
-            var randomDataToshow = new Set();
 
-            while (randomDataToshow.size < 3) {
-                randomDataToshow.add(Math.floor(Math.random() * (keys.length - 0) + 0));
+            if (dataMap.size >= 3) {
+
+                let shopNames = Array.from(shopMap.values());
+                let efficiencies = Array.from(efficiencyMap.values());
+                let keys = Array.from(dataMap.keys());
+                let values = Array.from(dataMap.values());
+                var table = " <table class=\"table table-striped mt-sm-4\">\n" +
+                    "<caption style='text-align: center'>Your best offers</caption>\n" +
+                    "        <thead class=\"thead-light\">\n" +
+                    "\n" +
+                    "        <th scope=\"col\">Name</th>\n" +
+                    "        <th scope=\"col\">Price</th>\n" +
+                    "        <th scope=\"col\">Shop</th>\n" +
+                    "        <th scope=\"col\">Efficiency</th>\n" +
+                    "        </thead>\n" +
+                    "        <tbody>";
+                var randomDataToshow = new Set();
+
+                while (randomDataToshow.size < 3) {
+                    randomDataToshow.add(Math.floor(Math.random() * (keys.length - 0) + 0));
+                }
+
+                var arrayFromData = Array.from(randomDataToshow);
+
+                table += "<tr><td>" + keys[arrayFromData[0]] + "</td><td>" + values[arrayFromData[0]] + "</td><td>" + shopNames[arrayFromData[0]] + "</td><td>" + efficiencies[arrayFromData[0]] + "</td></tr>";
+                table += "<tr><td>" + keys[arrayFromData[1]] + "</td><td>" + values[arrayFromData[1]] + "</td><td>" + shopNames[arrayFromData[1]] + "</td><td>" + efficiencies[arrayFromData[1]] + "</td></tr>";
+                table += "<tr><td>" + keys[arrayFromData[2]] + "</td><td>" + values[arrayFromData[2]] + "</td><td>" + shopNames[arrayFromData[2]] + "</td><td>" + efficiencies[arrayFromData[2]] + "</td></tr>";
+                table += "</tbody></table>";
+                bestOfferDiv.innerHTML = table;
+
             }
-
-            var arrayFromData = Array.from(randomDataToshow);
-
-            table += "<tr><td>" + keys[arrayFromData[0]] + "</td><td>" + values[arrayFromData[0]] + "</td><td>" + shopNames[arrayFromData[0]] + "</td><td>"+ efficiencies[arrayFromData[0]] + "</td></tr>";
-            table += "<tr><td>" + keys[arrayFromData[1]] + "</td><td>" + values[arrayFromData[1]] + "</td><td>" + shopNames[arrayFromData[1]] + "</td><td>"+ efficiencies[arrayFromData[1]] + "</td></tr>";
-            table += "<tr><td>" + keys[arrayFromData[2]] + "</td><td>" + values[arrayFromData[2]] + "</td><td>" + shopNames[arrayFromData[2]] + "</td><td>"+ efficiencies[arrayFromData[2]] + "</td></tr>";
-            table += "</tbody></table>";
-            bestOfferDiv.innerHTML = table;
-
         }
     })
 }
