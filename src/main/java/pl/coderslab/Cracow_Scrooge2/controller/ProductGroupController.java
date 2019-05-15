@@ -44,4 +44,10 @@ public class ProductGroupController {
 
     }
 
+    @GetMapping("/all")
+    public String allCategories(Model model,@SessionAttribute("loggedInUser") User user) {
+        model.addAttribute("categories",productGroupRepository.findAllByUserId(user.getId()));
+        return "category/all";
+    }
+
 }
