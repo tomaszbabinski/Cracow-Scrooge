@@ -5,10 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.Cracow_Scrooge2.dto.UserDto;
-import pl.coderslab.Cracow_Scrooge2.entity.ProductGroup;
 import pl.coderslab.Cracow_Scrooge2.entity.User;
 import pl.coderslab.Cracow_Scrooge2.repository.ProductGroupRepository;
 import pl.coderslab.Cracow_Scrooge2.repository.UserRepository;
@@ -16,8 +16,6 @@ import pl.coderslab.Cracow_Scrooge2.service.user.UserService;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -41,9 +39,9 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register(@Valid UserDto userDto, BindingResult result) {
+    public String register(@Valid @ModelAttribute("userDto") UserDto userDto, BindingResult result) {
         if (result.hasErrors()) {
-            return "redirect:/user/register";
+            return "registration";
         } else {
             User user = new User(userDto);
             userRepository.save(user);

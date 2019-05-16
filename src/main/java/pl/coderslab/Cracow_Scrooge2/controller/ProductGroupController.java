@@ -30,7 +30,7 @@ public class ProductGroupController {
     }
 
     @PostMapping("/add")
-    public String addCategoryProcess(@Valid @ModelAttribute("productGroupDto") ProductGroupDto productGroupDto, BindingResult result, Model model,
+    public String addCategoryProcess(@Valid @ModelAttribute("productGroupDto") ProductGroupDto productGroupDto, BindingResult result,
     @SessionAttribute("loggedInUser") User user) {
         if (result.hasErrors()) {
             return "category/add";

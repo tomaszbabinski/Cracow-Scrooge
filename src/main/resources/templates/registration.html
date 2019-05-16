@@ -20,40 +20,40 @@
                 <button class="btn btn-md btn-info btn-block mb-md-2" type="Submit">Go To Login Page</button>
             </form>
             <h4 class="mt-md-2 mb-md-2">Registration Form</h4>
-            <form autocomplete="off" action="#" th:action="@{/user/register}"
+            <form th:action="@{/user/register}"
                   th:object="${userDto}" method="post" class="form-horizontal"
                   role="form">
                 <div class="form-group">
-                    <label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
-                           class="validation-message"></label>
                     <input type="text" th:field="*{firstName}" placeholder="Name"
-                           class="form-control"/>
+                           class="form-control" th:errorClass="error"/>
+                    <label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+                           class="error text-danger" style="font-weight: bold; color: #f26419!important;">First name error</label>
                 </div>
 
                 <div class="form-group">
-                    <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
-                           class="validation-message"></label>
                     <input type="text" th:field="*{lastName}"
                            placeholder="Last Name" class="form-control"/>
+                    <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                           class="error text-danger" style="font-weight: bold; color: #f26419!important;">Last name error</label>
                 </div>
                 <div class="form-group">
                     <input type="text" th:field="*{email}" placeholder="Email"
                            class="form-control"/> <label
                         th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-                        class="validation-message"></label>
+                        class="error text-danger" style="font-weight: bold; color: #f26419!important;">Email error</label>
                 </div>
                 <div class="form-group">
-                    <input type="password" th:field="*{password}"
+                    <input id="pass" type="password" th:field="*{password}"
                            placeholder="Password" class="form-control"/> <label
                         th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-                        class="validation-message"></label>
+                        class="error text-danger" style="font-weight: bold; color: #f26419!important;"> Password error</label>
                 </div>
 
                 <div class="form-group">
-                    <input type="password" th:field="*{passwordRepeat}"
+                    <input id="repeatedPass" type="password" th:field="*{passwordRepeat}"
                            placeholder="Password Repeat" class="form-control"/> <label
                         th:if="${#fields.hasErrors('passwordRepeat')}" th:errors="*{passwordRepeat}"
-                        class="validation-message"></label>
+                        class="error text-danger" style="font-weight: bold; color: #f26419!important;"> Password repeat error</label>
                 </div>
 
                 <div class="form-group">

@@ -21,7 +21,8 @@
                 <div class="form-group">
                     <input type="text" th:field="*{name}"
                            placeholder="Name of the category" class="form-control" th:errorClass="error"/>
-                    <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error text-danger">Name
+                    <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error text-danger"
+                    style="color: #f26419!important; font-weight: bold">Category
                         error</label>
                 </div>
                 <div class="form-group">

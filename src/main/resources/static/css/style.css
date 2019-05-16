@@ -108,3 +108,8 @@ caption{
     border: thick solid #33658a;
 }
 
+.scrooge-error{
+    font-weight: bold !important;
+    color: orangered !important;
+}
+

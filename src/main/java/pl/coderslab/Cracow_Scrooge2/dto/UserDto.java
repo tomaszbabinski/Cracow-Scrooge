@@ -13,18 +13,18 @@ public class UserDto {
 
     private Long id;
 
-    @NotEmpty
+    @NotEmpty(message = "*Please add first name")
     private String firstName;
 
-    @NotEmpty
+    @NotEmpty(message = "*Please add last name")
     private String lastName;
 
-    @NotEmpty
+    @NotEmpty(message = "*Please add password")
     private String password;
 
-    @NotEmpty
+    @NotEmpty(message = "*Please repeat the password")
     private String passwordRepeat;
 
-    @NotEmpty
+    @NotEmpty(message = "*Please add email")
     private String email;
 }
