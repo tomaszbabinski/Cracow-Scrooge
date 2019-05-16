@@ -21,36 +21,39 @@
     <div class="row mt-sm-5">
 
         <div class="col-md-12 products mt-sm-5">
+
             <h4 style="text-align: center" class="mt-sm-2">All purchases</h4>
-            <table class="table table-striped mt-sm-3">
-                <thead class="thead-light">
+            <div class="table-responsive-lg">
+                <table class="table table-striped mt-sm-3">
+                    <thead class="thead-light">
 
-                <th scope="col">Product</th>
-                <th scope="col">brand</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
-                <th scope="col">Shop name</th>
-                <th scope="col">Purchase date</th>
-                <th scope="col">Average price</th>
-                <th scope="col">Saved money</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">brand</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Shop name</th>
+                    <th scope="col">Purchase date</th>
+                    <th scope="col">Average price</th>
+                    <th scope="col">Saved money</th>
 
-                </thead>
-                <tbody>
-                <th:block th:each="purchase : ${purchases}">
-                    <tr>
-                        <td th:text="${purchase.product.name}"/>
-                        <td th:text="${purchase.product.brand}"/>
-                        <td th:text="${purchase.quantity}"/>
-                        <td th:text="${purchase.offer.price}"/>
-                        <td th:text="${purchase.offer.shopName}"/>
-                        <td th:text="${purchase.purchaseDate}"/>
-                        <td th:text="${purchase.averagePrice}"/>
-                        <td th:text="${purchase.savedMoney}"/>
+                    </thead>
+                    <tbody>
+                    <th:block th:each="purchase : ${purchases}">
+                        <tr>
+                            <td th:text="${purchase.product.name}"/>
+                            <td th:text="${purchase.product.brand}"/>
+                            <td th:text="${purchase.quantity}"/>
+                            <td th:text="${purchase.offer.price}"/>
+                            <td th:text="${purchase.offer.shopName}"/>
+                            <td th:text="${purchase.purchaseDate}"/>
+                            <td th:text="${purchase.averagePrice}"/>
+                            <td th:text="${purchase.savedMoney}"/>
 
-                    </tr>
-                </th:block>
-                </tbody>
-            </table>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
