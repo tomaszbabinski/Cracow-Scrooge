@@ -27,33 +27,39 @@
                     <input type="text" th:field="*{firstName}" placeholder="Name"
                            class="form-control" th:errorClass="error"/>
                     <label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
-                           class="error text-danger" style="font-weight: bold; color: #f26419!important;">First name error</label>
+                           class="error text-danger" style="font-weight: bold; color: #f26419!important;">First name
+                        error</label>
                 </div>
 
                 <div class="form-group">
                     <input type="text" th:field="*{lastName}"
                            placeholder="Last Name" class="form-control"/>
                     <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
-                           class="error text-danger" style="font-weight: bold; color: #f26419!important;">Last name error</label>
+                           class="error text-danger" style="font-weight: bold; color: #f26419!important;">Last name
+                        error</label>
                 </div>
                 <div class="form-group">
                     <input type="text" th:field="*{email}" placeholder="Email"
                            class="form-control"/> <label
                         th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-                        class="error text-danger" style="font-weight: bold; color: #f26419!important;">Email error</label>
+                        class="error text-danger" style="font-weight: bold; color: #f26419!important;">Email
+                    error</label>
                 </div>
                 <div class="form-group">
                     <input id="pass" type="password" th:field="*{password}"
                            placeholder="Password" class="form-control"/> <label
                         th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-                        class="error text-danger" style="font-weight: bold; color: #f26419!important;"> Password error</label>
+                        class="error text-danger" style="font-weight: bold; color: #f26419!important;"> Password
+                    error</label>
                 </div>
 
                 <div class="form-group">
                     <input id="repeatedPass" type="password" th:field="*{passwordRepeat}"
                            placeholder="Password Repeat" class="form-control"/> <label
-                        th:if="${#fields.hasErrors('passwordRepeat')}" th:errors="*{passwordRepeat}"
-                        class="error text-danger" style="font-weight: bold; color: #f26419!important;"> Password repeat error</label>
+                        id="passCheck" th:if="${#fields.hasErrors('passwordRepeat')}" th:errors="*{passwordRepeat}"
+                        class="error text-danger" style="font-weight: bold; color: #f26419!important;"> Password repeat
+                    error</label>
+                    <p id="infoCheck"></p>
                 </div>
 
                 <div class="form-group">
@@ -75,5 +81,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+<script rel="stylesheet" src="/js/registration.js"></script>
 </body>
 </html>

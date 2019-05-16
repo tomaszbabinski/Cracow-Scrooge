@@ -9,9 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     renderBestOffersPerProduct();
     setInterval(renderBestOffersPerProduct, 1000 * 15);
 
-    var divWithchart = document.getElementById("chartDiv");
-    divWithchart.addEventListener("onresize", resize)
-
 });
 
 function resize() {
