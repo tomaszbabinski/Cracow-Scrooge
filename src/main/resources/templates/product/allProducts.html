@@ -23,36 +23,42 @@
     <div class="row mt-sm-5">
 
         <div class="col-md-12 products mt-sm-5">
+            <div class="table-responsive-md">
+                <table id="allProducts" class="table mt-sm-5">
+                    <thead class="thead-light">
 
-            <table id="allProducts" class="table mt-sm-5">
-                <thead class="thead-light">
+                    <th scope="col">Name</th>
+                    <th scope="col">brand</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Usage per days</th>
 
-                <th scope="col">Name</th>
-                <th scope="col">brand</th>
-                <th scope="col">Category</th>
-                <th scope="col">Usage per days</th>
+                    </thead>
+                    <tbody>
+                    <th:block th:each="product : ${products}">
+                        <tr>
+                            <td>
+                                <a th:href="@{'/product/getById/'+${product.id}}" th:text="${product.name}"></a>
+                            </td>
+                            <td th:text="${product.brand}"/>
+                            <td th:text="${product.group.name}"/>
+                            <td th:if="${product.averageEfficiency != 0}" th:text="${product.averageEfficiency}"/>
+                            <td th:if="${product.averageEfficiency == 0}" th:text="na"/>
 
-                </thead>
-                <tbody>
-                <th:block th:each="product : ${products}">
-                    <tr>
-                        <td>
-                            <a th:href="@{'/product/getById/'+${product.id}}" th:text="${product.name}"></a>
-                        </td>
-                        <td th:text="${product.brand}"/>
-                        <td th:text="${product.group.name}"/>
-                        <td th:if="${product.averageEfficiency != 0}" th:text="${product.averageEfficiency}"/>
-                        <td th:if="${product.averageEfficiency == 0}" th:text="na"/>
-
-                    </tr>
-                </th:block>
-                </tbody>
-            </table>
-
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>

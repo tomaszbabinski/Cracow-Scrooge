@@ -22,79 +22,83 @@
 
     <div class="row mt-sm-5">
 
-        <div class="col-md-8 offset-md-2 products mt-sm-5">
-
-        <table class="table table-striped text-center mt-sm-5">
-            <thead class="thead-light text-center">
-            <th scope="col" class="text-center">Name</th>
-            <th scope="col" class="text-center">brand</th>
-            <th scope="col" class="text-center">Usage</th>
-            <th scope="col" class="text-center">Edit</th>
-            <th scope="col" class="text-center">Remove</th>
-            <th scope="col" class="text-center">Offer</th>
-            <th scope="col" class="text-center">Start/Stop using</th>
-            </thead>
-            <tbody>
-            <tr>
-                <td th:text="${product.name}"/>
-                <td th:text="${product.brand}"/>
-                <td th:if="${product.averageEfficiency != 0}" th:text="${product.averageEfficiency}"/>
-                <td th:if="${product.averageEfficiency == 0}" th:text="na"/>
-                <td>
-                    <a th:href="@{'/product/edit/'+${product.id}}">
-                        <span class="fa fa-pencil"></span>
-                    </a>
-                </td>
-                <td>
-                    <a th:href="@{'/product/remove/'+${product.id}}">
-                        <span class="fa fa-remove"></span>
-                    </a>
-                </td>
-                <td>
-                    <a th:href="@{'/offer/add/'+${product.id}}">
-                        <span class="fa fa-plus"></span>
-                    </a>
-                </td>
-                <td>
-                    <a id="start" th:if="${product.isActive == 'No'}" th:attr="url=@{'/product/start/'+${product.id}}">
-                        <span class="fa fa-play" style="color:greenyellow; cursor: pointer"></span>
-                    </a>
-                    <a id="stop" th:if="${product.isActive == 'Yes'}" th:attr="url=@{'/product/stop/'+${product.id}}">
-                        <span class="fa fa-stop" style="color:orangered; cursor: pointer"></span>
-                    </a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <h3 style="text-align: center" id="offerList"><strong>Offer list</strong></h3>
-
-        <table class="table table-striped text-center">
-            <thead class="thead-light text-center">
-
-            <th scope="col" class="text-center">Price</th>
-            <th scope="col" class="text-center">Shop</th>
-            <th scope="col" class="text-center">Added on</th>
-            <th scope="col" class="text-center">Add purchase</th>
-
-            </thead>
-            <tbody>
-            <th:block th:each="offer : ${product.offers}">
-                <tr>
-                    <td th:text="${offer.price}"/>
-                    <td th:text="${offer.shopName}"/>
-                    <td th:text="${offer.addedAt}"/>
-                    <td>
-                        <a th:href="@{'/purchase/add/'+${product.id}+'/'+${offer.id}}">
-                            <span class="fa fa-usd"></span>
-                        </a>
-                    </td>
-
-                </tr>
-            </th:block>
-            </tbody>
-        </table>
-
+        <div class="col-md-12 products mt-sm-5">
+            <div class="table-responsive-md">
+                <table class="table table-striped text-center mt-sm-5">
+                    <thead class="thead-light text-center">
+                    <th scope="col" class="text-center">Name</th>
+                    <th scope="col" class="text-center">brand</th>
+                    <th scope="col" class="text-center">Usage</th>
+                    <th scope="col" class="text-center">Edit</th>
+                    <th scope="col" class="text-center">Remove</th>
+                    <th scope="col" class="text-center">Offer</th>
+                    <th scope="col" class="text-center">Start/Stop using</th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td th:text="${product.name}"/>
+                        <td th:text="${product.brand}"/>
+                        <td th:if="${product.averageEfficiency != 0}" th:text="${product.averageEfficiency}"/>
+                        <td th:if="${product.averageEfficiency == 0}" th:text="na"/>
+                        <td>
+                            <a th:href="@{'/product/edit/'+${product.id}}">
+                                <span class="fa fa-pencil"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/product/remove/'+${product.id}}">
+                                <span class="fa fa-remove"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/offer/add/'+${product.id}}">
+                                <span class="fa fa-plus"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <a id="start" th:if="${product.isActive == 'No'}"
+                               th:attr="url=@{'/product/start/'+${product.id}}">
+                                <span class="fa fa-play" style="color:greenyellow; cursor: pointer"></span>
+                            </a>
+                            <a id="stop" th:if="${product.isActive == 'Yes'}"
+                               th:attr="url=@{'/product/stop/'+${product.id}}">
+                                <span class="fa fa-stop" style="color:orangered; cursor: pointer"></span>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
+            <h3 style="text-align: center" id="offerList"><strong>Offer list</strong></h3>
+            <div class="table-responsive-md">
+                <table class="table table-striped text-center">
+                    <thead class="thead-light text-center">
+
+                    <th scope="col" class="text-center">Price</th>
+                    <th scope="col" class="text-center">Shop</th>
+                    <th scope="col" class="text-center">Added on</th>
+                    <th scope="col" class="text-center">Add purchase</th>
+
+                    </thead>
+                    <tbody>
+                    <th:block th:each="offer : ${product.offers}">
+                        <tr>
+                            <td th:text="${offer.price}"/>
+                            <td th:text="${offer.shopName}"/>
+                            <td th:text="${offer.addedAt}"/>
+                            <td>
+                                <a th:href="@{'/purchase/add/'+${product.id}+'/'+${offer.id}}">
+                                    <span class="fa fa-usd"></span>
+                                </a>
+                            </td>
+
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
 
     </div>
 </div>
