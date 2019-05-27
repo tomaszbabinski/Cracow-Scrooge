@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ProductGroupRepository extends JpaRepository<ProductGroup,Long> {
 
-    List<ProductGroup> findAllByUserId(Long id);
+    public List<ProductGroup> findAllByUserId(Long id);
 }

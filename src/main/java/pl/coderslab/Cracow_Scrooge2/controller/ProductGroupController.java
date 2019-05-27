@@ -50,4 +50,10 @@ public class ProductGroupController {
         return "category/all";
     }
 
+    @GetMapping("/byId/{id}")
+    public String categoryById(@PathVariable Long id,Model model) {
+        model.addAttribute("productGroup",productGroupRepository.getOne(id));
+        return "category/byId";
+    }
+
 }

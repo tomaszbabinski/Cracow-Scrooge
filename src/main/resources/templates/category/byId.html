@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -21,21 +22,30 @@
     <div class="row mt-sm-5">
 
         <div class="col-md-6 offset-md-3 products mt-sm-5">
-            <h4 style="text-align: center" class="mt-sm-2">Categories</h4>
+            <h4 style="text-align: center" class="mt-sm-2">Category by Id</h4>
             <table class="table table-striped mt-sm-3 text-center">
                 <thead class="thead-light">
 
                 <th scope="col">Name of the category</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Remove</th>
 
                 </thead>
                 <tbody>
-                <th:block th:each="category : ${categories}">
+
                     <tr>
+                        <td th:text="${productGroup.name}"/>
                         <td>
-                            <a th:href="@{'/category/byId/'+${category.id}}" th:text="${category.name}"></a>
+                            <a th:href="@{'/category/edit/'+${productGroup.id}}">
+                                <span class="fa fa-pencil"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/category/remove/'+${productGroup.id}}">
+                                <span class="fa fa-remove"></span>
+                            </a>
                         </td>
                     </tr>
-                </th:block>
                 </tbody>
             </table>
         </div>
