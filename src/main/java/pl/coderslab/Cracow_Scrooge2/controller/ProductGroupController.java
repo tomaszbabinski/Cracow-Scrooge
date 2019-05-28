@@ -64,4 +64,16 @@ public class ProductGroupController {
         return "category/byId";
     }
 
+    @GetMapping("/edit/{id}")
+    public String editCategory(@PathVariable Long id, Model model) {
+        model.addAttribute("productGroup", productGroupRepository.getOne(id));
+        return "category/edit";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String processEditCategory(@ModelAttribute ProductGroup productGroup, @PathVariable Long id) {
+        productGroupRepository.save(productGroup);
+        return "redirect:/category/byId/"+id;
+    }
+
 }
