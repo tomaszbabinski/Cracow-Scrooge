@@ -39,8 +39,10 @@
                                class="form-control"/>
                 </div>
                 <div class="form-group">
-                        <input type="hidden" th:field="*{group.id}"
-                               class="form-control"/>
+                    <select th:field="*{group.id}">
+                        <option th:each="group : ${categories}" th:value="${group.id}" th:text="${group.name}">
+                        </option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <input type="hidden" th:field="*{isActive}"
