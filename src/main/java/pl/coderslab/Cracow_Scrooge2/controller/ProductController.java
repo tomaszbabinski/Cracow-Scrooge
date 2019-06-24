@@ -10,6 +10,7 @@ import pl.coderslab.Cracow_Scrooge2.entity.User;
 import pl.coderslab.Cracow_Scrooge2.repository.ProductGroupRepository;
 import pl.coderslab.Cracow_Scrooge2.repository.ProductRepository;
 import pl.coderslab.Cracow_Scrooge2.service.efficiency.EfficiencyService;
+import pl.coderslab.Cracow_Scrooge2.service.product.ProductService;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
@@ -22,13 +23,16 @@ public class ProductController {
     private ProductRepository productRepository;
     private ProductGroupRepository productGroupRepository;
     private EfficiencyService efficiencyService;
+    private ProductService productService;
 
     @Autowired
-    public ProductController(ProductRepository productRepository, ProductGroupRepository productGroupRepository, EfficiencyService efficiencyService) {
+    public ProductController(ProductRepository productRepository, ProductGroupRepository productGroupRepository, EfficiencyService efficiencyService, ProductService productService) {
         this.productRepository = productRepository;
         this.productGroupRepository = productGroupRepository;
         this.efficiencyService = efficiencyService;
+        this.productService = productService;
     }
+
 
     @GetMapping("/add")
     public String add(Model model){
@@ -37,9 +41,14 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public String addProcess(@ModelAttribute Product product, HttpSession httpSession){
+    public String addProcess(@ModelAttribute Product product, HttpSession httpSession,Model model){
         product.setUser((User) httpSession.getAttribute("loggedInUser"));
         product.setIsActive("No");
+        if(productService.checkIfExists(product.getName(), product.getBrand(),product.getUser().getId())){
+            model.addAttribute("message","This product already exists");
+            model.addAttribute("product", new Product());
+            return "product/add";
+        }
         productRepository.save(product);
         return "redirect:/product/all";
     }

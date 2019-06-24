@@ -40,6 +40,9 @@
                             </option>
                         </select>
                 </div>
+                <div align="center" th:if="${message}">
+                    <p style="font-weight: bold; color: #f26419!important;" th:text="${message}">The product exists already</p>
+                </div>
                 <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block mb-sm-3" >Add new product</button>
                 </div>
