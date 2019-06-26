@@ -29,6 +29,7 @@
                     <th scope="col" class="text-center">Name</th>
                     <th scope="col" class="text-center">brand</th>
                     <th scope="col" class="text-center">Usage</th>
+                    <th scope="col" class="text-center">Liked</th>
                     <th scope="col" class="text-center">Edit</th>
                     <th scope="col" class="text-center">Remove</th>
                     <th scope="col" class="text-center">Offer</th>
@@ -40,6 +41,19 @@
                         <td th:text="${product.brand}"/>
                         <td th:if="${product.averageEfficiency != 0}" th:text="${product.averageEfficiency}"/>
                         <td th:if="${product.averageEfficiency == 0}" th:text="na"/>
+                        <td>
+                            <a id="isLiked" th:if="${product.isLiked != 'Yes'}"
+                               th:href="@{'/product/like/'+${product.id}}">
+                                <span class="fa fa-heart" style="color:grey; cursor: pointer"></span>
+                            </a>
+                            <a id="notLiked" th:if="${product.isLiked == 'Yes'}"
+                               th:href="@{'/product/unlike/'+${product.id}}">
+                                <span class="fa fa-heart" style="color:red; cursor: pointer"></span>
+                            </a>
+                            <!--<a th:href="@{'/product/edit/'+${product.id}}">-->
+                                <!--<span class="fa fa-heart"></span>-->
+                            <!--</a>-->
+                        </td>
                         <td>
                             <a th:href="@{'/product/edit/'+${product.id}}">
                                 <span class="fa fa-pencil"></span>

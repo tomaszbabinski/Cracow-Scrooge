@@ -47,6 +47,8 @@ public class Product {
     private LocalDate begOfUsage;
     private LocalDate endOfUsage;
 
+    private String isLiked;
+
     public Double getAverageEfficiency() {
         Long sumOfAllEfficiencies = efficiencies.stream().map(efficiency -> (efficiency.getEfficiencyInDays())).reduce((a, b) -> Long.sum(a, b)).orElse(0L);
         Double averageEfficiency = (double) Math.round(sumOfAllEfficiencies * 100.0) / 100.0;

@@ -121,6 +121,22 @@ public class ProductController {
 
     }
 
+    @GetMapping("/like/{id}")
+    public String likeProduct(@PathVariable Long id){
+        Product product = productRepository.getOne(id);
+        product.setIsLiked("Yes");
+        productRepository.save(product);
+        return "redirect:/product/all";
+    }
+
+    @GetMapping("/unlike/{id}")
+    public String unlikeProduct(@PathVariable Long id){
+        Product product = productRepository.getOne(id);
+        product.setIsLiked("No");
+        productRepository.save(product);
+        return "redirect:/product/all";
+    }
+
 
     @ModelAttribute("categories")
     List<ProductGroup> getCategories(HttpSession session){
